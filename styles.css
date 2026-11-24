@@ -1,7 +1,8 @@
 /* Waypoint's site, in the app's own look: the default theme's grouped grey and
-   white in light, its slate in dark, and the Move-ring pink as the one accent. */
+   white, and the Move-ring pink as the one accent. */
 
 :root {
+  color-scheme: light;
   --canvas: #f2f2f7;
   --panel: #ffffff;
   --text: #000000;
@@ -19,25 +20,6 @@
   --weight-ink: #8f3cc0;
   --protein-ink: #1a7f37;
   --radius: 26px;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --canvas: #131922;
-    --panel: #202835;
-    --text: #ffffff;
-    --secondary: #c9d3e6;
-    --tertiary: #9aa6bc;
-    --rule: #2d3747;
-    --pink: #ff375f;
-    --link: #ff5c7a;
-    --training: #0a84ff;
-    --weight: #bf5af2;
-    --protein: #30db5b;
-    --training-ink: #4da3ff;
-    --weight-ink: #cf86f7;
-    --protein-ink: #30db5b;
-  }
 }
 
 * { box-sizing: border-box; }
