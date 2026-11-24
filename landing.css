@@ -1,0 +1,538 @@
+/* The landing page. Colours and base type come from styles.css; this file is
+   the wide layout, the device frames and the sections. */
+
+html { scroll-behavior: smooth; }
+
+.home main { max-width: none; margin: 0; padding: 0; }
+
+section[id] { scroll-margin-top: 84px; }
+
+.text-link {
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 2px solid var(--pink);
+  padding-bottom: 2px;
+}
+
+/* Type */
+
+.home h1 {
+  font-size: clamp(44px, 6.6vw, 82px);
+  line-height: 1.0;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  margin: 0 0 24px;
+}
+
+.home h1 em { font-style: normal; color: var(--pink); }
+
+.home h2 {
+  font-size: clamp(32px, 4.2vw, 50px);
+  line-height: 1.06;
+  font-weight: 800;
+  letter-spacing: -0.032em;
+  margin: 0 0 18px;
+  text-wrap: balance;
+}
+
+.eyebrow {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-ink, var(--link));
+  margin: 0 0 14px;
+}
+
+.home .lede {
+  font-size: clamp(18px, 1.7vw, 21px);
+  line-height: 1.5;
+  color: var(--secondary);
+  margin: 0 0 24px;
+  max-width: 34em;
+}
+
+/* Devices */
+
+.phone {
+  --w: 270px;
+  flex: none;
+  width: var(--w);
+  padding: calc(var(--w) * 0.032);
+  border-radius: calc(var(--w) * 0.165);
+  background: #08080a;
+  box-shadow:
+    inset 0 0 0 1.5px #3b3b42,
+    0 30px 60px -20px rgba(0, 0, 0, 0.45),
+    0 10px 24px -10px rgba(0, 0, 0, 0.3);
+}
+
+.phone img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: calc(var(--w) * 0.135);
+}
+
+.watch {
+  --w: 170px;
+  flex: none;
+  width: var(--w);
+  padding: calc(var(--w) * 0.07);
+  border-radius: calc(var(--w) * 0.27);
+  background: #08080a;
+  box-shadow:
+    inset 0 0 0 1.5px #3b3b42,
+    0 24px 44px -16px rgba(0, 0, 0, 0.5);
+}
+
+.watch img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: calc(var(--w) * 0.2);
+}
+
+/* Hero */
+
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 40px;
+  padding-top: 72px;
+  padding-bottom: 96px;
+}
+
+.hero .chevrons {
+  position: absolute;
+  right: -4%;
+  top: 2%;
+  width: min(62%, 700px);
+  color: var(--pink);
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.hero-copy { position: relative; }
+
+.hero-lede {
+  font-size: clamp(18px, 1.8vw, 22px);
+  line-height: 1.5;
+  color: var(--secondary);
+  margin: 0 0 32px;
+  max-width: 30em;
+}
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px 26px;
+  margin-bottom: 30px;
+}
+
+.promises {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+}
+
+.promises li {
+  margin: 0;
+  background: var(--panel);
+  color: var(--secondary);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 999px;
+}
+
+.hero-art {
+  position: relative;
+  height: 600px;
+}
+
+.hero-art .phone { position: absolute; top: 0; }
+
+.hero-art .phone-front { --w: 286px; left: 12%; z-index: 2; animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+.hero-art .phone-back {
+  --w: 250px;
+  left: 50%;
+  top: 60px;
+  z-index: 1;
+  animation: rise 0.9s 0.12s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.hero-art .watch {
+  position: absolute;
+  --w: 150px;
+  left: 0;
+  bottom: 0;
+  z-index: 3;
+  animation: rise 0.9s 0.24s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(36px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Feature rows */
+
+.feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 64px;
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+.feature.flip .feature-art { order: 2; }
+
+.food { --accent: var(--pink); --accent-ink: var(--link); }
+.training, .wrist { --accent: var(--training); --accent-ink: var(--training-ink); }
+.plans { --accent: var(--weight); --accent-ink: var(--weight-ink); }
+.private { --accent: var(--protein); --accent-ink: var(--protein-ink); }
+
+.feature-art {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  padding: 52px 24px 0;
+  height: 560px;
+  overflow: hidden;
+  border-radius: 40px;
+  background: color-mix(in srgb, var(--accent) 13%, var(--panel));
+}
+
+.feature-art .phone { --w: 236px; align-self: flex-start; }
+
+.feature-art .phone-low { margin-top: 72px; }
+
+.ticks {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ticks li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 12px;
+  color: var(--secondary);
+}
+
+.ticks li::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 0.38em;
+  width: 13px;
+  height: 7px;
+  border-left: 2.5px solid var(--accent);
+  border-bottom: 2.5px solid var(--accent);
+  transform: rotate(-45deg);
+}
+
+/* Apple Watch band */
+
+.wrist {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 48px;
+  margin-top: 48px;
+  margin-bottom: 48px;
+  padding-top: 56px;
+  padding-bottom: 56px;
+  background: var(--panel);
+  border-radius: 40px;
+}
+
+.wrist-copy { padding-left: 32px; }
+
+.wrist .lede { margin-bottom: 0; }
+
+.wrist-art { display: flex; justify-content: center; align-items: flex-start; gap: 22px; }
+
+.wrist-art .watch:last-child { margin-top: 44px; }
+
+/* The rest */
+
+.more { padding-top: 72px; padding-bottom: 48px; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.tile {
+  background: var(--panel);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+
+.tile h3 { font-size: 19px; letter-spacing: -0.015em; margin: 0 0 6px; }
+
+.tile p { color: var(--secondary); font-size: 16px; margin: 0; }
+
+/* Coach: the app's dark slate in both schemes */
+
+.coach {
+  position: relative;
+  overflow: hidden;
+  margin-top: 48px;
+  padding: 72px 56px 56px;
+  border-radius: 40px;
+  background: #131922;
+  color: #ffffff;
+  border: 2px solid #ff375f;
+  box-shadow: 0 30px 80px -30px rgba(255, 55, 95, 0.45);
+}
+
+.coach-mark {
+  position: absolute;
+  right: -70px;
+  top: -90px;
+  width: 460px;
+  color: #ff375f;
+  opacity: 0.13;
+  pointer-events: none;
+}
+
+.coach > * { position: relative; }
+.coach > .coach-mark { position: absolute; }
+
+.coach-head { max-width: 620px; margin-bottom: 44px; }
+
+.coach-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0 0 22px;
+  padding: 8px 15px 8px 12px;
+  border-radius: 999px;
+  border: 1.5px solid #ff375f;
+  color: #ff5c7a;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.coach h2 { font-size: clamp(36px, 5vw, 60px); }
+
+.coach h2 em { font-style: normal; color: #ff375f; }
+
+.coach .lede { color: #c9d3e6; margin-bottom: 0; }
+
+.coach-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.coach-card {
+  grid-column: span 2;
+  background: #202835;
+  border: 1px solid #2d3747;
+  border-radius: var(--radius);
+  padding: 26px 24px 24px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.coach-card.wide { grid-column: span 3; }
+
+.coach-card:hover { transform: translateY(-3px); border-color: #ff375f; }
+
+.coach-card .glyph {
+  display: block;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 18px;
+  fill: none;
+  stroke: #ff375f;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.coach-card h3 {
+  font-size: 21px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0 0 8px;
+}
+
+.coach-card p { color: #c9d3e6; font-size: 16px; margin: 0; }
+
+/* A before and after, as the coach moves a figure */
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid #2d3747;
+  font-variant-numeric: tabular-nums;
+}
+
+.step span { color: #9aa6bc; font-size: 17px; font-weight: 600; text-decoration: line-through; text-decoration-color: #5b6679; }
+
+.step span, .step strong { white-space: nowrap; }
+
+.step strong { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; }
+
+.step i {
+  position: relative;
+  flex: none;
+  width: 34px;
+  height: 2px;
+  background: #ff375f;
+  border-radius: 2px;
+}
+
+.step i::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -4px;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid #ff375f;
+  border-right: 2px solid #ff375f;
+  transform: rotate(45deg);
+}
+
+.coach-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+  margin-top: 36px;
+}
+
+.coach-foot .btn { background: #ffffff; color: #131922; }
+
+.coach-foot p { color: #9aa6bc; font-size: 15px; margin: 0; }
+
+/* Privacy */
+
+.private {
+  padding-top: 112px;
+  padding-bottom: 40px;
+  text-align: center;
+}
+
+.private .lede { margin-left: auto; margin-right: auto; }
+
+.private a { font-weight: 600; }
+
+/* Last call */
+
+.closer { padding-top: 56px; padding-bottom: 40px; }
+
+.closer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: var(--panel);
+  border-radius: 40px;
+  padding: 64px 24px;
+}
+
+.closer img {
+  width: 84px;
+  height: 84px;
+  border-radius: 20px;
+  margin-bottom: 22px;
+  box-shadow: 0 10px 28px rgba(255, 45, 85, 0.28);
+}
+
+.closer h2 { margin-bottom: 8px; }
+
+.home footer { margin-top: 24px; padding-bottom: 56px; text-align: center; }
+
+/* Scroll reveal, only when the script has said it will run */
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.js .reveal.in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero-art .phone, .hero-art .watch { animation: none; }
+}
+
+/* Narrower */
+
+@media (max-width: 960px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 44px;
+    padding-bottom: 56px;
+    text-align: center;
+  }
+  .hero-lede { margin-left: auto; margin-right: auto; }
+  .cta-row, .promises { justify-content: center; }
+  .hero .chevrons { width: 90%; right: 5%; top: auto; bottom: 8%; }
+  .hero-art { width: 440px; max-width: 100%; margin: 0 auto; }
+
+  .feature { grid-template-columns: 1fr; gap: 32px; padding-top: 36px; padding-bottom: 36px; }
+  .feature.flip .feature-art { order: 0; }
+
+  .wrist { grid-template-columns: 1fr; gap: 36px; margin-left: 24px; margin-right: 24px; }
+  .wrist-copy { padding-left: 8px; }
+
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .coach { padding: 48px 32px 40px; }
+  .coach-card, .coach-card.wide { grid-column: span 3; }
+  .coach-card:last-child { grid-column: span 6; }
+
+  .private { padding-top: 72px; }
+}
+
+@media (max-width: 520px) {
+  .btn { padding: 16px 22px; }
+
+  .hero-art { height: 470px; width: 330px; }
+  .hero-art .phone-front { --w: 222px; left: 8%; }
+  .hero-art .phone-back { --w: 194px; left: 44%; top: 46px; }
+  .hero-art .watch { --w: 112px; }
+
+  .feature-art { height: 380px; gap: 12px; padding: 32px 12px 0; border-radius: 30px; }
+  .feature-art .phone { --w: min(152px, 42vw); }
+  .feature-art .phone-low { margin-top: 44px; }
+
+  .wrist { margin-left: 16px; margin-right: 16px; border-radius: 30px; padding-top: 40px; padding-bottom: 40px; }
+  .wrist-art { gap: 12px; }
+  .wrist-art .watch { --w: 136px; }
+
+  .grid { grid-template-columns: 1fr; }
+  .coach { padding: 36px 18px 28px; border-radius: 30px; }
+  .coach-card, .coach-card.wide, .coach-card:last-child { grid-column: span 6; }
+  .step { gap: 10px; }
+  .step span { font-size: 15px; }
+  .step strong { font-size: 22px; }
+  .step i { width: 26px; }
+  .coach-mark { width: 300px; right: -70px; top: -60px; }
+  .coach-foot .btn { white-space: normal; text-align: center; line-height: 1.25; }
+  .closer-inner { border-radius: 30px; padding: 48px 20px; }
+}
